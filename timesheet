@@ -70,12 +70,14 @@ format_days = workbook.add_format({
 format_timegridWhite = workbook.add_format({
     'border': True,
     'bg_color': 'ffffff',
+    'align': 'center',
     'font_name': 'Ubuntu Mono'
 })
 
 format_timegridGrey = workbook.add_format({
     'border': True,
     'bg_color': 'eeeeee',
+    'align': 'center',
     'font_name': 'Ubuntu Mono'
 })
 
@@ -124,7 +126,7 @@ def putDefaults(mm, yy):
     worksheet.set_row(5, 30)
     worksheet.merge_range('B6:G6', 'PROJECT CODING', format_centerbigger)
     for i in range(1,7): ## cells for project codes
-        worksheet.write(6, i, '', format_border)
+        worksheet.write(6, i, '', format_centerbold)
 
     fieldx = 7
     fieldy = 0
@@ -149,6 +151,7 @@ def putDefaults(mm, yy):
 
     worksheet.set_row(40, 30)
     worksheet.write('A41', 'Date:', format_vcenterbold)
+    worksheet.write('B41', now.isoformat(), format_vcenterbold)
 
     worksheet.set_row(41, 30)
     worksheet.write('A42', 'Free text space:', format_vcenterbold)
@@ -165,7 +168,7 @@ def putDefaults(mm, yy):
         worksheet.write('E38', '=SUM(E8:E37)', format_centerbold)
         worksheet.write('F38', '=SUM(F8:F37)', format_centerbold)
         worksheet.write('G38', '=SUM(G8:G37)', format_centerbold)
-        worksheet.write('H38', '=SUM(H8:H37)', format_centerbold)
+        worksheet.write('H38', '=SUM(H8:H37)', format_timegridGrey)
     ## month of 31 days
     elif total == 31:
         worksheet.write('B39', '=SUM(B8:B38)', format_centerbold)
@@ -174,7 +177,7 @@ def putDefaults(mm, yy):
         worksheet.write('E39', '=SUM(E8:E38)', format_centerbold)
         worksheet.write('F39', '=SUM(F8:F38)', format_centerbold)
         worksheet.write('G39', '=SUM(G8:G38)', format_centerbold)
-        worksheet.write('H39', '=SUM(H8:H38)', format_centerbold)
+        worksheet.write('H39', '=SUM(H8:H38)', format_timegridGrey)
     ## month of 28 days
     elif total == 28:
         worksheet.write('B36', '=SUM(B8:B35)', format_centerbold)
@@ -183,7 +186,7 @@ def putDefaults(mm, yy):
         worksheet.write('E36', '=SUM(E8:E35)', format_centerbold)
         worksheet.write('F36', '=SUM(F8:F35)', format_centerbold)
         worksheet.write('G36', '=SUM(G8:G35)', format_centerbold)
-        worksheet.write('H36', '=SUM(H8:H35)', format_centerbold)
+        worksheet.write('H36', '=SUM(H8:H35)', format_timegridGrey)
     ## month of 29 days
     elif total == 29:
         worksheet.write('B37', '=SUM(B8:B36)', format_centerbold)
@@ -192,7 +195,7 @@ def putDefaults(mm, yy):
         worksheet.write('E36', '=SUM(E8:E35)', format_centerbold)
         worksheet.write('F36', '=SUM(F8:F35)', format_centerbold)
         worksheet.write('G36', '=SUM(G8:G35)', format_centerbold)
-        worksheet.write('H36', '=SUM(H8:H35)', format_centerbold)
+        worksheet.write('H36', '=SUM(H8:H35)', format_timegridGrey)
 
 def calendar(mm, yy):
     month = monthrange(yy, mm)
