@@ -15,7 +15,7 @@ package manager or `pip` to find it and install it.
 
 ```
 usage: timesheet [-h] [-sm START_MONTH] [-sy START_YEAR] [-em END_MONTH]
-                 [-ey END_YEAR] [-o OUTPUT_FILE]
+                 [-ey END_YEAR] [-n NAME] [-o OUTPUT_FILE]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -27,13 +27,13 @@ optional arguments:
                         ending month, ex: 11
   -ey END_YEAR, --end-year END_YEAR
                         ending year, ex: 2016
+  -n NAME, --name NAME  name of person, ex: 'John Doe'
   -o OUTPUT_FILE, --output-file OUTPUT_FILE
                         output file, ex: timesheet.xlsx
 ```
 
 It is not necessary to specify any argument. In that case, timesheetpy will
 create a timesheet for the current month called `timesheet.xlsx`
-
 
 ## licensing
 

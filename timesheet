@@ -90,7 +90,8 @@ format_bold = workbook.add_format({
 
 format_centerbold = workbook.add_format({
     'bold': True,
-    'align': 'center'
+    'align': 'center',
+    'font_name': 'Inconsolata'
 })
 
 format_vcenterbold = workbook.add_format({
@@ -110,7 +111,7 @@ format_centerbigger = workbook.add_format({
 ## }}}
 
 def putDefaults(mm, yy):
-    #worksheet.set_column('A:A', 15) ## make first column wider
+    worksheet.set_column('A:A', 12) ## make first column wider
 
     worksheet.set_row(0, 30)
     worksheet.write('A1', 'STICHTING DYNE.ORG', format_vcenterbold)
@@ -126,7 +127,8 @@ def putDefaults(mm, yy):
         worksheet.merge_range('B3:C3', args.name, format_centerbigger)
         #worksheet.write('B3', args.name, format_centerbigger)
 
-    #worksheet.merge_range('E3:F3', 'Total hrs. worked:', format_bold)
+    worksheet.write('A4', "Total hrs:", format_centerbigger)
+    worksheet.write('A5', "Total days:", format_centerbigger)
 
     worksheet.set_row(5, 30)
     worksheet.merge_range('B6:G6', 'TIMESHEET', format_centerbigger)
@@ -195,7 +197,10 @@ def writetotals():
     for col in range(66,73):
         if col == 72:
             fmt = format_timegridGrey
+            worksheet.write('B4', '=SUM('+chr(col)+due+':'+chr(col)+tre+')', fmt)
+            worksheet.write('B5', '=COUNTIFS('+chr(col)+due+':'+chr(col)+tre+',"<>0")', fmt)
         worksheet.write(chr(col)+uno, '=SUM('+chr(col)+due+':'+chr(col)+tre+')', fmt)
+
 
 def calendar(mm, yy):
     month = monthrange(yy, mm)
