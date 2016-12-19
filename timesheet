@@ -174,32 +174,26 @@ def putDefaults(mm, yy):
     writetotals()
 
 def writetotals():
-    uno = str(0)
-    tre = str(0)
-    due = str(11)
+    totalsrow = str(42) ## bottom row of totals
+    startrow  = str(11) ## first day
+    endrow    = str(0)  ## last day
     if total == 30:
-        uno = str(41)
-        tre = str(40)
-
+        endrow = str(40)
     elif total == 31:
-        uno = str(42)
-        tre = str(41)
-
+        endrow = str(41)
     elif total == 28:
-        uno = str(39)
-        tre = str(38)
-
+        endrow = str(38)
     elif total == 29:
-        uno = str(40)
-        tre = str(39)
+        endrow = str(39)
 
     fmt = format_centerbold
     for col in range(66,73):
         if col == 72:
             fmt = format_timegridGrey
-            worksheet.write('B4', '=SUM('+chr(col)+due+':'+chr(col)+tre+')', fmt)
-            worksheet.write('B5', '=COUNTIFS('+chr(col)+due+':'+chr(col)+tre+',"<>0")', fmt)
-        worksheet.write(chr(col)+uno, '=SUM('+chr(col)+due+':'+chr(col)+tre+')', fmt)
+            worksheet.write('B4', '=SUM('+chr(col)+startrow+':'+chr(col)+endrow+')', fmt)
+            worksheet.write('B5', '=COUNTIFS('+chr(col)+startrow+':'+chr(col)+endrow+',"<>0")', fmt)
+
+        worksheet.write(chr(col)+totalsrow, '=SUM('+chr(col)+startrow+':'+chr(col)+endrow+')', fmt)
 
 
 def calendar(mm, yy):
